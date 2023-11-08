@@ -6,10 +6,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useUserStore } from '../stores/user'
 
-const isFinished = ref(true)
-const totalCorrect = ref(0)
+const store = useUserStore()
+
+const isFinished = ref(false)
+const totalCorrect = computed(() => store.$state.points)
 
 const handleSubmission = () => {
   isFinished.value = true

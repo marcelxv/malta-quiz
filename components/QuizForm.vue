@@ -1,75 +1,86 @@
 <template>
   <div class="quiz-container">
     <div class="parallax" />
-    <h2>Question {{ currentQuestion + 1 }} of {{ totalQuestions }}</h2>
-    <p>{{ questionText }}</p>
-    <ul class="options">
-      <li v-for="option in options" :key="option">
-        <label>
-          <input v-model="userAnswers[currentQuestion]" type="radio" :value="option">
-          {{ option }}
-        </label>
-      </li>
-    </ul>
-    <button @click="handleNext">
-      Next
-    </button>
-    <UserResults :total-correct="totalCorrect" :total-questions="totalQuestions" />
+    <QuestionItem
+      :question-number="currentQuestion"
+      :total-questions="totalQuestions"
+      :current-question="currentQuestion"
+      :rendered-question="renderedQuestion"
+      @update-answer="handleUpdateAnswer"
+      @next="handleNext"
+    />
+    <QuizProgress :total-correct="totalCorrect" :total-questions="totalQuestions" @next="handleNext" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, defineEmits } from 'vue'
-import questions from '../data/questions.json'
+import { ref, onMounted, defineEmits, computed } from 'vue'
+import { useUserStore } from '../stores/user'
+
+type IQuestion = {
+  text: string
+  options: string[]
+  answer: string
+}
+
+const store = useUserStore()
 
 // general quiz data
+const questions: IQuestion[] = []
 const totalQuestions = ref(questions.length)
 const currentQuestion = ref(0)
-const userAnswers = ref([]) // array of user answers
-const totalCorrect = ref(0)
+const userAnswers: Record<number, string> = {}
+const totalCorrect = computed(() => store.$state.points)
 
 // current question data
 const rightAnswer = ref('')
-const questionText = ref('')
-const options = ref([])
+const renderedQuestion = ref<IQuestion>({
+  text: '',
+  options: [],
+  answer: ''
+})
 
 const emit = defineEmits(['finish'])
 
-// methods
+const handleUpdateAnswer = (answer: string) => {
+  userAnswers[currentQuestion.value] = answer
+}
+
 const handleNext = () => {
-  // should check if user has selected the right answer
   if (checkAnswer()) {
-    alert('Correct!')
-    totalCorrect.value++
+    alert('Correct!') // TODO: create and render component
+    store.addPoints(1)
   } else {
-    alert('Wrong!')
+    alert('Wrong!') // TODO: create and render component
   }
-  // and increment currentQuestion
   currentQuestion.value++
 
-  // if we are on the last question, show the results
   if (currentQuestion.value === totalQuestions.value) {
-    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`)
-    // navigate to the home page
+    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`) // TODO: create and render component
     emit('finish', true)
     return
   }
 
-  // otherwise, show the next question
-  questionText.value = questions[currentQuestion.value].text
-  options.value = questions[currentQuestion.value].options
-  rightAnswer.value = questions[currentQuestion.value].answer
+  renderedQuestion.value = questions[currentQuestion.value]
+  rightAnswer.value = renderedQuestion.value.answer
 }
 
 const checkAnswer = () => {
-  return userAnswers.value[currentQuestion.value] === rightAnswer.value
+  return userAnswers[currentQuestion.value] === rightAnswer.value
 }
 
 // mounted
-onMounted(() => {
-  questionText.value = questions[currentQuestion.value].text
-  options.value = questions[currentQuestion.value].options
-  rightAnswer.value = questions[currentQuestion.value].answer
+onMounted(async () => {
+  try {
+    const response = await fetch('/data/questions.json')
+    questions.push(...(await response.json()))
+
+    totalQuestions.value = questions.length
+    renderedQuestion.value = questions[currentQuestion.value]
+    rightAnswer.value = renderedQuestion.value.answer
+  } catch (error) {
+    console.error(error)
+  }
 })
 
 </script>
