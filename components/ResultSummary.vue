@@ -75,7 +75,7 @@ onMounted(async () => {
   justify-content: space-between;
   width: 200px;
   padding: 0.5rem 1rem;
-  // border-radius: (--border-radius);
+  border-radius: var(--border-radius);
   background-color: #fff;
   margin: 0.5rem 0;
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quiz__container">
     <QuizForm v-if="!isFinished" :total-correct="totalCorrect" @finish="handleSubmission" />
     <ResultSummary v-else :user-points="totalCorrect" />
   </div>
@@ -19,3 +19,17 @@ const handleSubmission = () => {
 }
 
 </script>
+
+<style scoped lang="less">
+.quiz__container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+</style>
