@@ -49,3 +49,13 @@ const handleNext = () => {
 }
 
 </script>
+
+<style scoped lang="less">
+.option-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: flex;
+}
+
+</style>

@@ -3,8 +3,11 @@
     Results!
     <p>You got {{ props.userPoints }} points!</p>
     <ol>
-      <li v-for="item in sortedRanking" :key="item.username"
-        :class="[{ 'user-item': item.username === 'You' }, 'ranking-item']">
+      <li
+        v-for="item in sortedRanking"
+        :key="item.username"
+        :class="[{ 'user-item': item.username === 'You' }, 'ranking-item']"
+      >
         {{ item.username }}
         {{ item.score }} points
       </li>
@@ -54,7 +57,6 @@ const percentageBetterThanOthers = computed(() => {
   return Math.round((totalUsers - userIndex - 1) / (totalUsers - 1) * 100)
 })
 
-
 onMounted(async () => {
   try {
     const response = await fetch('/data/ranking.json')
@@ -65,3 +67,35 @@ onMounted(async () => {
   }
 })
 </script>
+
+<style scoped lang="less">
+.ranking-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  margin: 0.5rem 0;
+
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.user-item {
+  background-color: green;
+  color: white;
+  // transition effect sliding up when it appears
+  animation: slide-up 0.5s ease-in-out;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+</style>
