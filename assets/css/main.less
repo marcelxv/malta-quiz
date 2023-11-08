@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@700&family=Ubuntu&display=swap');
+
+:root {
+  // colors
+  --charcoal: #233d4dff;
+  --pumpkin: #fe7f2dff;
+  --sunglow: #fcca46ff;
+  --olivine: #a1c181ff;
+  --zomp: #619b8aff;
+  --white: #fefae0ff;
+
+  // border radius
+  --border-radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
 a {
   text-decoration: none;
+  color: var(--charcoal);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Passion One', cursive;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+button {
+  background-color: var(--olivine);
+  margin-top: 1rem;
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }

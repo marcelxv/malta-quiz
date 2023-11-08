@@ -75,7 +75,7 @@ onMounted(async () => {
   justify-content: space-between;
   width: 200px;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  // border-radius: (--border-radius);
   background-color: #fff;
   margin: 0.5rem 0;
 
@@ -83,7 +83,7 @@ onMounted(async () => {
 }
 
 .user-item {
-  background-color: green;
+  background-color: var(--zomp);
   color: white;
   // transition effect sliding up when it appears
   animation: slide-up 0.5s ease-in-out;

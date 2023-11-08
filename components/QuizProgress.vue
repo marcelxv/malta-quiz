@@ -25,6 +25,7 @@ defineProps({
 </script>
 
 <style scoped lang="less">
+
 .progress-bar {
   width: 100%;
   background-color: #f3f3f3;
@@ -33,7 +34,7 @@ defineProps({
 
 .progress {
   height: 20px;
-  background-color: #4caf50;
+  background-color: var(--pumpkin);
   border-radius: 5px;
 }
 </style>

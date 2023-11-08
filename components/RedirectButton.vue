@@ -1,9 +1,7 @@
 <template>
-  <div class="redirect-button">
-    <NuxtLink :to="to">
-      <p>About</p>
-    </NuxtLink>
-  </div>
+  <button class="redirect-button" @click="$router.push(to)">
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -22,9 +20,7 @@ defineProps({
 .redirect-button {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #000;
+  background-color: var(--pumpkin);
   text-decoration: none;
   margin-top: 1rem;
   cursor: pointer;
