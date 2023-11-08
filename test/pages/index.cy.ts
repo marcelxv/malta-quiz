@@ -1,4 +1,4 @@
-import Index from './index.vue'
+import Index from '../../pages/index.vue'
 
 describe('<Index />', () => {
   it('renders', () => {
