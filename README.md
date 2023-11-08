@@ -1,4 +1,20 @@
-# malta-quiz
+# Malta Quiz
+
+## Description
+
+This project is an assignment for the position of Frontend Developer at Fast Track. 
+
+This is a quiz app that uses the local API to fetch questions and answers. The app is built with Nuxt 3, Vue 3, Pinia, LESS, and Tailwind CSS. The app is responsive and works on mobile, tablet, and desktop devices.
+
+Project's features:
+- Parallax effect
+- Responsive design
+- Server-side rendering
+- User can get questions with answers
+- User can select just one answer per question
+- User can answer all the questions and then post his/hers answers and get back how many correct answers there were, and that should be displayed to the user
+- User can see how well they did and how they compared to others that have taken the quiz eg. "You were better then 60% of all quizers"
+
 
 ## Build Setup
 
