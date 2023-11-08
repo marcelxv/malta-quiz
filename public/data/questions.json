@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "text": "What is capital of Malta?",
+    "options": [
+      "Valletta",
+      "Rome",
+      "Paris",
+      "London"
+    ],
+    "answer": "Valletta"
+  },
+  {
+    "id": 2,
+    "text": "How many people live in Malta?",
+    "options": [
+      "500,000",
+      "1,000,000",
+      "2,000,000",
+      "3,000,000"
+    ],
+    "answer": "500,000"
+  },
+  {
+    "id": 3,
+    "text": "What is the official language of Malta?",
+    "options": [
+      "Maltese",
+      "English",
+      "Italian",
+      "French"
+    ],
+    "answer": "Maltese"
+  },
+  {
+    "id": 4,
+    "text": "What is the currency of Malta?",
+    "options": [
+      "Euro",
+      "Dollar",
+      "Pound",
+      "Yen"
+    ],
+    "answer": "Euro"
+  },
+  {
+    "id": 5,
+    "text": "What is the calling code of Malta?",
+    "options": [
+      "+356",
+      "+357",
+      "+358",
+      "+359"
+    ],
+    "answer": "+356"
+  }
+]
