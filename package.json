@@ -10,7 +10,8 @@
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "lintfix": "yarn lint:js --fix",
-    "test": "jest"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --component"
   },
   "dependencies": {
     "@nuxt/content": "^1.0.0",
@@ -19,7 +20,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@vitejs/plugin-vue": "^4.4.1",
     "core-js": "^3.25.3",
-    "nuxt": "^2.15.8",
+    "nuxt": "^3.8.1",
     "pinia": "^2.1.7",
     "vue": "^3.2.36"
   },
