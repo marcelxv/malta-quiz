@@ -1,5 +1,5 @@
-import Quiz from './quiz.vue'
 import { setActivePinia, createPinia } from 'pinia'
+import Quiz from './quiz.vue'
 
 describe('<Quiz />', () => {
   beforeEach(() => {
