@@ -3,15 +3,13 @@
     Results!
     <p>You got {{ props.userPoints }} points!</p>
     <ol>
-      <li
-        v-for="item in sortedRanking"
-        :key="item.username"
-        :class="[{ 'user-item': item.username === 'You' }, 'ranking-item']"
-      >
+      <li v-for="item in sortedRanking" :key="item.username"
+        :class="[{ 'user-item': item.username === 'You' }, 'ranking-item']">
         {{ item.username }}
         {{ item.score }} points
       </li>
     </ol>
+    <p>You were better then {{ percentageBetterThanOthers }}% of other users!</p>
   </div>
 </template>
 
@@ -19,9 +17,9 @@
 import { ref, computed, onMounted, defineProps } from 'vue'
 
 type RankingItem = {
- score: number
- username: string
- position?: number
+  score: number
+  username: string
+  position?: number
 }
 
 const props = defineProps<{
@@ -30,7 +28,7 @@ const props = defineProps<{
 
 const ranking = ref<RankingItem[]>([])
 
-function calculateRanking (rankingData: RankingItem[]): RankingItem[] {
+const calculateRanking = (rankingData: RankingItem[]): RankingItem[] => {
   const rankingWithUser = [...rankingData]
   const userIndex = rankingWithUser.findIndex(item => item.username === 'You')
 
@@ -47,8 +45,15 @@ function calculateRanking (rankingData: RankingItem[]): RankingItem[] {
     position: index + 1
   }))
 }
-
 const sortedRanking = computed(() => calculateRanking(ranking.value))
+
+const percentageBetterThanOthers = computed(() => {
+  const userIndex = sortedRanking.value.findIndex(item => item.username === 'You')
+  const totalUsers = sortedRanking.value.length
+
+  return Math.round((totalUsers - userIndex - 1) / (totalUsers - 1) * 100)
+})
+
 
 onMounted(async () => {
   try {

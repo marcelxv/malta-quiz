@@ -1,7 +1,7 @@
 <template>
   <div>
     <QuizForm v-if="!isFinished" :total-correct="totalCorrect" @finish="handleSubmission" />
-    <ResultsForm v-else :user-points="totalCorrect" />
+    <ResultSummary v-else :user-points="totalCorrect" />
   </div>
 </template>
 
