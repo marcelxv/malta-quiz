@@ -1,4 +1,4 @@
-import Blog from './blog.vue'
+import Blog from '../../pages/blog.vue'
 
 describe('<Blog />', () => {
   it('renders', () => {
