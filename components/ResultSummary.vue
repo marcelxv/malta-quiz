@@ -1,35 +1,53 @@
 <template>
   <div class="result-summary__container">
     <div class="result-summary__card">
-      <h2 class="result-summary__title">
-        You got {{ props.userPoints }} points!
-      </h2>
-      <h4 class="result-summary__ranking-title">
-        You are better than {{ percentageBetterThanOthers }}% of the players!
-      </h4>
-      <div class="result-summary__ranking-list">
-        <li
-          v-for="item in sortedRanking"
-          :key="item.username"
-          :class="[{ 'result-summary__user-item': item.username === 'You' }, 'result-summary__ranking-item']"
-        >
-          {{ item.username }} -
-          {{ item.score }} points
-        </li>
+      <div v-if="noGame">
+        <h2 class="result-summary__title">
+          You haven't played yet!
+        </h2>
+        <RedirectButton to="/quiz">
+          Play now!
+        </RedirectButton>
+        <div class="result-summary__ranking-list">
+          <li v-for="item in sortedRanking" :key="item.username" class="result-summary__ranking-item">
+            {{ item.username }} -
+            {{ item.score }} points
+          </li>
+        </div>
+      </div>
+      <div v-else>
+        <h2 class="result-summary__title">
+          You got {{ props.userPoints }} points!
+        </h2>
+        <h4 class="result-summary__ranking-title">
+          You are better than {{ percentageBetterThanOthers }}% of the players!
+        </h4>
+        <div class="result-summary__ranking-list">
+          <li
+            v-for="item in sortedRanking"
+            :key="item.username"
+            :class="[{ 'result-summary__user-item': item.username === 'You' }, 'result-summary__ranking-item']"
+          >
+            {{ item.username }} -
+            {{ item.score }} points
+          </li>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { computed, defineProps } from 'vue'
 import { useRanking } from '../composables/useRanking'
 
 const props = defineProps<{
   userPoints: number
 }>()
 
-const { sortedRanking, percentageBetterThanOthers } = useRanking(props.userPoints)
+const noGame = computed(() => props.userPoints === null)
+
+const { sortedRanking, percentageBetterThanOthers } = useRanking(props.userPoints as number)
 
 </script>
 

@@ -1,14 +1,8 @@
 <template>
   <div class="quiz-container">
-    <div class="parallax" />
-    <QuestionItem
-      :question-number="currentQuestion"
-      :total-questions="totalQuestions"
-      :current-question="currentQuestion"
-      :rendered-question="renderedQuestion"
-      @update-answer="handleUpdateAnswer"
-      @next="handleNext"
-    />
+    <div class="parallax bg" />
+    <QuestionItem :question-number="currentQuestion" :total-questions="totalQuestions" :current-question="currentQuestion"
+      :rendered-question="renderedQuestion" @update-answer="handleUpdateAnswer" @next="handleNext" />
     <QuizProgress :total-correct="totalCorrect" :total-questions="totalQuestions" @next="handleNext" />
   </div>
 </template>
@@ -27,17 +21,13 @@ const userAnswers = ref<string[]>([])
 
 const emit = defineEmits(['finish'])
 
-const handleUpdateAnswer = (answer : string) => {
+const handleUpdateAnswer = (answer: string) => {
   userAnswers.value[currentQuestion.value] = answer
 }
 
 const handleNext = () => {
-  if (checkAnswer()) {
-    alert('Correct!')
-    store.addPoints(1)
-  } else {
-    alert('Wrong!')
-  }
+  checkAnswer() && store.addPoints(1)
+
   currentQuestion.value++
 
   if (currentQuestion.value === totalQuestions.value) {
@@ -64,5 +54,17 @@ const checkAnswer = () => {
   align-items: center;
   justify-content: center;
 }
+
+.bg {
+  background-image: url('/img/malta_004.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 </style>
-../composables/useQuestions
