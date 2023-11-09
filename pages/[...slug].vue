@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container safe-bottom ">
     <h1>
       Hey there! I think you're lost.
     </h1>

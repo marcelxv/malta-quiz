@@ -1,6 +1,8 @@
 ---
 title: Malta's Leisure and Luxury
 description: 'Indulge in the luxurious side of Malta, from boutique accommodations to exclusive experiences.'
+image: '/img/malta_002.jpg'
+
 ---
 
 Malta offers an array of experiences that cater to those with a taste for the finer things in life. The island boasts a selection of boutique hotels and five-star resorts that provide impeccable service and plush comforts. Many of these are nestled within restored historical buildings, offering a unique blend of luxury and history.

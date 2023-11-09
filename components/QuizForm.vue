@@ -37,7 +37,6 @@ const handleNext = () => {
   currentQuestion.value++
 
   if (currentQuestion.value === totalQuestions.value) {
-    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`)
     emit('finish', true)
     return
   }

@@ -1,6 +1,7 @@
 ---
 title: Malta is a great place to visit
 description: 'Malta is a island in the Mediterranean Sea. It is a great place to visit.'
+image: '/img/malta_001.jpg'
 ---
 
 Have you ever imagined yourself on a beach, with the sun shining on your face, and the sound of the waves crashing on the shore? If so, then Malta is the place for you! Malta is an island in the Mediterranean Sea. It is a great place to visit because it has beautiful beaches, delicious food, and friendly people.

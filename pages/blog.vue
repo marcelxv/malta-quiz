@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container safe-bottom">
     <h1>Blog</h1>
     <div class="blog-list">
       <div v-for="blog in content" :key="blog.id" class="blog-item">
@@ -26,7 +26,7 @@ const content = ref([
     id: '1',
     title: 'A Great Place to Visit',
     description: 'Discover why Malta is a great place to visit.',
-    image: 'https://picsum.photos/200/300',
+    image: '/img/malta_001.jpg',
     path: 'great-place-to-visit'
   },
   {

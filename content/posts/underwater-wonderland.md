@@ -1,6 +1,7 @@
 ---
 title: Malta's Underwater Wonderland
 description: 'Dive into the crystal-clear waters of Malta and explore an underwater paradise.'
+image: '/img/malta_003.jpg'
 ---
 
 Malta might be known for its historical landmarks, but beneath the waves lies a world just as mesmerizing. The archipelago is a premier diving destination, with an underwater landscape that is as varied and rich as its terrestrial counterpart. Shipwrecks from World War II rest silently on the seabed, creating artificial reefs teeming with marine life.

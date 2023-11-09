@@ -7,7 +7,8 @@
   --sunglow: #fcca46ff;
   --olivine: #a1c181ff;
   --zomp: #619b8aff;
-  --white: whitesmoke;
+  --white: #ffffff;
+  --offwhite: #f8f8f8ff;
 
   // border radius
   --border-radius: 0.5rem;
@@ -25,6 +26,7 @@ a {
 
 a:hover {
   text-decoration: underline;
+  color: var(--pumpkin);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -54,10 +56,44 @@ body {
   padding: 0;
 }
 
+// helper classes
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+.safe-bottom {
   margin-bottom: 3rem;
 }
 
+.img-fluid {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 3rem 0;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.text-primary {
+  color: var(--pumpkin);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-offwhite {
+  background-color: var(--offwhite);
+}
+
+.above {
+  z-index: 1;
+}

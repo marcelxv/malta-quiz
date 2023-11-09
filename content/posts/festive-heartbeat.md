@@ -1,6 +1,7 @@
 ---
 title: Malta's Festive Heartbeat
 description: 'Experience the vibrant festivals and local traditions that animate Malta’s streets.'
+image: '/img/malta_003.jpg'
 ---
 
 Malta is not only a feast for the eyes but also for the soul, especially during its myriad of festivals. Throughout the year, the islands come alive with a calendar packed with religious feasts, music festivals, and seasonal celebrations. The traditional 'festa' is an explosive mix of faith, fireworks, and community spirit, honoring the patron saints of the local parishes.

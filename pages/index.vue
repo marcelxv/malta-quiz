@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="section">
+  <main>
+    <section class="section">
       <ParallaxSection image="/img/malta_004.jpg">
         <div class="container">
           <h1>Try Malta's Quiz</h1>
@@ -10,9 +10,9 @@
           </RedirectButton>
         </div>
       </ParallaxSection>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <ParallaxSection image="/img/malta_005.jpg">
         <div class="container">
           <h1>Know more about Malta</h1>
@@ -25,8 +25,8 @@
           </RedirectButton>
         </div>
       </ParallaxSection>
-    </div>
-    <div class="section">
+    </section>
+    <section class="section">
       <ParallaxSection image="/img/malta_003.jpg">
         <div class="container">
           <h1>Ranking</h1>
@@ -38,8 +38,8 @@
           </RedirectButton>
         </div>
       </ParallaxSection>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">

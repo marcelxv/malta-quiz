@@ -1,5 +1,5 @@
 <template>
-  <div class="quiz__container">
+  <main class="quiz__container safe-bottom">
     <div v-show="!isStarted" class="quiz__intro">
       <h1>Quiz</h1>
       <p>Test your knowledge of Malta!</p>
@@ -9,7 +9,7 @@
     </div>
     <QuizForm v-if="!isFinished && isStarted" :total-correct="totalCorrect" @finish="handleSubmission" />
     <ResultSummary v-if="isFinished" :user-points="totalCorrect" />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -74,13 +74,12 @@ const handleSubmission = () => {
 }
 
 .quiz__container {
-  // background: url('https://media.gq.com/photos/5bc4b85c6f8daa7dae417db4/16:9/w_2240,c_limit/travel-guide-gq-malta.jpg');
   margin: 0 auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100vh;
 }
 </style>
