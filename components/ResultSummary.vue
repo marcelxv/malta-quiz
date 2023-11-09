@@ -1,88 +1,107 @@
 <template>
-  <div>
-    Results!
-    <p>You got {{ props.userPoints }} points!</p>
-    <ol>
-      <li
-        v-for="item in sortedRanking"
-        :key="item.username"
-        :class="[{ 'user-item': item.username === 'You' }, 'ranking-item']"
-      >
-        {{ item.username }}
-        {{ item.score }} points
-      </li>
-    </ol>
-    <p>You were better then {{ percentageBetterThanOthers }}% of other users!</p>
+  <div class="result-summary__container">
+    <div class="result-summary__card">
+      <div v-if="noGame">
+        <h2 class="result-summary__title">
+          You haven't played yet!
+        </h2>
+        <RedirectButton to="/quiz">
+          Play now!
+        </RedirectButton>
+        <div class="result-summary__ranking-list">
+          <li v-for="item in sortedRanking" :key="item.username" class="result-summary__ranking-item">
+            {{ item.username }} -
+            {{ item.score }} points
+          </li>
+        </div>
+      </div>
+      <div v-else>
+        <h2 class="result-summary__title">
+          You got {{ props.userPoints }} points!
+        </h2>
+        <h4 class="result-summary__ranking-title">
+          You are better than {{ percentageBetterThanOthers }}% of the players!
+        </h4>
+        <div class="result-summary__ranking-list">
+          <li
+            v-for="item in sortedRanking"
+            :key="item.username"
+            :class="[{ 'result-summary__user-item': item.username === 'You' }, 'result-summary__ranking-item']"
+          >
+            {{ item.username }} -
+            {{ item.score }} points
+          </li>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, defineProps } from 'vue'
-
-type RankingItem = {
-  score: number
-  username: string
-  position?: number
-}
+import { computed, defineProps } from 'vue'
+import { useRanking } from '../composables/useRanking'
 
 const props = defineProps<{
   userPoints: number
 }>()
 
-const ranking = ref<RankingItem[]>([])
+const noGame = computed(() => props.userPoints === null)
 
-const calculateRanking = (rankingData: RankingItem[]): RankingItem[] => {
-  const rankingWithUser = [...rankingData]
-  const userIndex = rankingWithUser.findIndex(item => item.username === 'You')
+const { sortedRanking, percentageBetterThanOthers } = useRanking(props.userPoints as number)
 
-  if (userIndex === -1) {
-    rankingWithUser.push({ score: props.userPoints, username: 'You' })
-  } else {
-    rankingWithUser[userIndex].score = props.userPoints
-  }
-
-  rankingWithUser.sort((a, b) => b.score - a.score)
-
-  return rankingWithUser.map((item, index) => ({
-    ...item,
-    position: index + 1
-  }))
-}
-const sortedRanking = computed(() => calculateRanking(ranking.value))
-
-const percentageBetterThanOthers = computed(() => {
-  const userIndex = sortedRanking.value.findIndex(item => item.username === 'You')
-  const totalUsers = sortedRanking.value.length
-
-  return Math.round((totalUsers - userIndex - 1) / (totalUsers - 1) * 100)
-})
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/data/ranking.json')
-    const results: RankingItem[] = await response.json()
-    ranking.value = results
-  } catch (error) {
-    console.error(error)
-  }
-})
 </script>
 
 <style scoped lang="less">
-.ranking-item {
+.result-summary_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.result-summary__title {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.result-summary__card {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.result-summary__ranking-title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.result-summary__ranking-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  margin: 0.5rem 0;
+  width: 100%;
+  padding: 2rem;
+}
+
+.result-summary__ranking-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
+  width: 100%;
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
-  background-color: #fff;
   margin: 0.5rem 0;
 
   animation: fadeIn 0.5s ease-in-out;
 }
 
-.user-item {
+.result-summary__user-item {
   background-color: var(--zomp);
   color: white;
   // transition effect sliding up when it appears
@@ -92,10 +111,10 @@ onMounted(async () => {
     0% {
       transform: translateY(100%);
     }
+
     100% {
       transform: translateY(0);
     }
   }
 }
-
 </style>

@@ -20,19 +20,16 @@ defineProps({
 <style scoped>
 .parallax-container {
   height: 500px;
-  /* or the height you want */
   overflow: hidden;
   position: relative;
-  margin-bottom: 2rem;
+  margin: 0 auto;
 }
 
 .parallax {
-  /* Adjust as needed */
   height: 150%;
   width: 100%;
   position: absolute;
   top: -25%;
-  /* adjust the value such that the image is centered */
   left: 0;
   background-attachment: fixed;
   background-position: center;
@@ -46,7 +43,7 @@ defineProps({
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   /* black overlay with 50% opacity */
   z-index: 5;
   /* Ensure it's above the background but below the content */

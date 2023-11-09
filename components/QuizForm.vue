@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-container">
-    <div class="parallax" />
+    <div class="parallax bg" />
     <QuestionItem
       :question-number="currentQuestion"
       :total-questions="totalQuestions"
@@ -14,75 +14,43 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, defineEmits, computed } from 'vue'
+import { ref, defineEmits, computed } from 'vue'
 import { useUserStore } from '../stores/user'
-
-type IQuestion = {
-  text: string
-  options: string[]
-  answer: string
-}
+import { useQuestions } from '../composables/useQuestions'
 
 const store = useUserStore()
-
-// general quiz data
-const questions: IQuestion[] = []
-const totalQuestions = ref(questions.length)
-const currentQuestion = ref(0)
-const userAnswers: Record<number, string> = {}
 const totalCorrect = computed(() => store.$state.points)
 
-// current question data
-const rightAnswer = ref('')
-const renderedQuestion = ref<IQuestion>({
-  text: '',
-  options: [],
-  answer: ''
-})
+const { questions, totalQuestions, currentQuestion, rightAnswer, renderedQuestion, shuffleOptionsOrder } = useQuestions('/data/questions.json')
+
+const userAnswers = ref<string[]>([])
 
 const emit = defineEmits(['finish'])
 
 const handleUpdateAnswer = (answer: string) => {
-  userAnswers[currentQuestion.value] = answer
+  userAnswers.value[currentQuestion.value] = answer
 }
 
 const handleNext = () => {
-  if (checkAnswer()) {
-    alert('Correct!') // TODO: create and render component
-    store.addPoints(1)
-  } else {
-    alert('Wrong!') // TODO: create and render component
-  }
+  checkAnswer() && store.addPoints(1)
+
   currentQuestion.value++
 
   if (currentQuestion.value === totalQuestions.value) {
-    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`) // TODO: create and render component
+    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`)
     emit('finish', true)
     return
   }
 
-  renderedQuestion.value = questions[currentQuestion.value]
+  const shuffledOptions = shuffleOptionsOrder(questions.value[currentQuestion.value].options)
+  questions.value[currentQuestion.value].options = shuffledOptions
+  renderedQuestion.value = questions.value[currentQuestion.value]
   rightAnswer.value = renderedQuestion.value.answer
 }
 
 const checkAnswer = () => {
-  return userAnswers[currentQuestion.value] === rightAnswer.value
+  return userAnswers.value[currentQuestion.value] === rightAnswer.value
 }
-
-// mounted
-onMounted(async () => {
-  try {
-    const response = await fetch('/data/questions.json')
-    questions.push(...(await response.json()))
-
-    totalQuestions.value = questions.length
-    renderedQuestion.value = questions[currentQuestion.value]
-    rightAnswer.value = renderedQuestion.value.answer
-  } catch (error) {
-    console.error(error)
-  }
-})
-
 </script>
 
 <style scoped lang="less">
@@ -93,4 +61,16 @@ onMounted(async () => {
   justify-content: center;
 }
 
+.bg {
+  background-image: url('/img/malta_004.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 </style>
