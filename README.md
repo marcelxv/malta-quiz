@@ -47,3 +47,14 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+
+
+## Development Setup
+
+- Linting: ESLint
+- Formatting: Prettier
+- Code style: Airbnb
+- Commit style: Conventional Commits
+- Testing: Cypress
+- CI/CD: GitHub Actions
+- Hosting: Vercel

@@ -11,6 +11,16 @@ describe('<Quiz />', () => {
       props: {
         totalCorrect: 5,
         isFinished: false
+      },
+      setup () {
+        return {
+          useSeoMeta: {
+            title: 'title',
+            description: 'description',
+            image: 'image',
+            url: 'url'
+          }
+        }
       }
     })
   })

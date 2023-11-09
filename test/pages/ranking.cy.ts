@@ -1,10 +1,9 @@
-import Index from '../../pages/index.vue'
+import Ranking from '../../pages/ranking.vue'
 
-describe('<Index />', () => {
+describe('<Ranking />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(Index, {
-      // useSeoMeta mock
+    cy.mount(Ranking, {
       setup () {
         return {
           useSeoMeta: {
