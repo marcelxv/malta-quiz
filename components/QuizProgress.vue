@@ -41,7 +41,6 @@ defineProps({
   background-color: #f3f3f3;
   border-radius: 5px;
 
-
 }
 
 .progress {

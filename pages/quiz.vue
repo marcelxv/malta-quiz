@@ -3,7 +3,9 @@
     <div v-show="!isStarted" class="quiz__intro">
       <h1>Quiz</h1>
       <p>Test your knowledge of Malta!</p>
-      <button @click="isStarted = true">Start</button>
+      <button @click="isStarted = true">
+        Start
+      </button>
     </div>
     <QuizForm v-if="!isFinished && isStarted" :total-correct="totalCorrect" @finish="handleSubmission" />
     <ResultSummary v-if="isFinished" :user-points="totalCorrect" />

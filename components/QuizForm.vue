@@ -1,8 +1,14 @@
 <template>
   <div class="quiz-container">
     <div class="parallax bg" />
-    <QuestionItem :question-number="currentQuestion" :total-questions="totalQuestions" :current-question="currentQuestion"
-      :rendered-question="renderedQuestion" @update-answer="handleUpdateAnswer" @next="handleNext" />
+    <QuestionItem
+      :question-number="currentQuestion"
+      :total-questions="totalQuestions"
+      :current-question="currentQuestion"
+      :rendered-question="renderedQuestion"
+      @update-answer="handleUpdateAnswer"
+      @next="handleNext"
+    />
     <QuizProgress :total-correct="totalCorrect" :total-questions="totalQuestions" @next="handleNext" />
   </div>
 </template>
@@ -15,7 +21,7 @@ import { useQuestions } from '../composables/useQuestions'
 const store = useUserStore()
 const totalCorrect = computed(() => store.$state.points)
 
-const { questions, totalQuestions, currentQuestion, rightAnswer, renderedQuestion, fetchData, shuffleOptionsOrder } = useQuestions('/data/questions.json')
+const { questions, totalQuestions, currentQuestion, rightAnswer, renderedQuestion, shuffleOptionsOrder } = useQuestions('/data/questions.json')
 
 const userAnswers = ref<string[]>([])
 
