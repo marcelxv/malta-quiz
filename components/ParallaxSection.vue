@@ -23,7 +23,7 @@ defineProps({
   /* or the height you want */
   overflow: hidden;
   position: relative;
-  margin: 10px 0;
+  margin-bottom: 2rem;
 }
 
 .parallax {

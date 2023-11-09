@@ -107,6 +107,7 @@ const handleNext = () => {
 }
 
 .question-item_container {
+  background: var(--white);
   height: 320px;
   display: flex;
   flex-direction: column;
