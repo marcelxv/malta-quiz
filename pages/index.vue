@@ -42,6 +42,18 @@
   </div>
 </template>
 
+<script setup lang="ts">
+
+useSeoMeta({
+  title: 'Malta Trivia',
+  ogTitle: 'Malta Trivia',
+  description: 'Test your knowledge of Malta with this fun quiz!',
+  ogDescription: 'Test your knowledge of Malta with this fun quiz!',
+  ogImage: '/img/malta_004.jpg',
+  twitterCard: 'summary_large_image'
+})
+</script>
+
 <style scoped lang="less">
 .container {
   max-width: 800px;

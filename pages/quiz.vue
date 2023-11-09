@@ -14,15 +14,22 @@
 import { ref, computed } from 'vue'
 import { useUserStore } from '../stores/user'
 
+useSeoMeta({
+  title: 'Malta Trivia - Quiz Game',
+  ogTitle: 'Malta Trivia - Quiz Game',
+  description: 'Test your knowledge of Malta with this fun quiz!',
+  ogDescription: 'Test your knowledge of Malta with this fun quiz!',
+  ogImage: '/img/malta_004.jpg',
+  twitterCard: 'summary_large_image'
+})
+
 const store = useUserStore()
 
-// Reset points to 0 when the quiz is started
-store.$state.points = 0
+store.$state.points = null
 const isFinished = ref(false)
 const isStarted = ref(false)
 const totalCorrect = computed(() => store.$state.points)
 
-// When the user submits the quiz, we set isFinished to true
 const handleSubmission = () => {
   isFinished.value = true
 }
