@@ -14,75 +14,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, defineEmits, computed } from 'vue'
+import { ref, defineEmits, computed } from 'vue'
 import { useUserStore } from '../stores/user'
-
-type IQuestion = {
-  text: string
-  options: string[]
-  answer: string
-}
+import { useQuestions } from '../composables/useQuestions'
 
 const store = useUserStore()
-
-// general quiz data
-const questions: IQuestion[] = []
-const totalQuestions = ref(questions.length)
-const currentQuestion = ref(0)
-const userAnswers: Record<number, string> = {}
 const totalCorrect = computed(() => store.$state.points)
 
-// current question data
-const rightAnswer = ref('')
-const renderedQuestion = ref<IQuestion>({
-  text: '',
-  options: [],
-  answer: ''
-})
+const { questions, totalQuestions, currentQuestion, rightAnswer, renderedQuestion, fetchData, shuffleOptionsOrder } = useQuestions('/data/questions.json')
+
+const userAnswers = ref<string[]>([])
 
 const emit = defineEmits(['finish'])
 
-const handleUpdateAnswer = (answer: string) => {
-  userAnswers[currentQuestion.value] = answer
+const handleUpdateAnswer = (answer : string) => {
+  userAnswers.value[currentQuestion.value] = answer
 }
 
 const handleNext = () => {
   if (checkAnswer()) {
-    alert('Correct!') // TODO: create and render component
+    alert('Correct!')
     store.addPoints(1)
   } else {
-    alert('Wrong!') // TODO: create and render component
+    alert('Wrong!')
   }
   currentQuestion.value++
 
   if (currentQuestion.value === totalQuestions.value) {
-    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`) // TODO: create and render component
+    alert(`You got ${totalCorrect.value} out of ${totalQuestions.value} correct!`)
     emit('finish', true)
     return
   }
 
-  renderedQuestion.value = questions[currentQuestion.value]
+  const shuffledOptions = shuffleOptionsOrder(questions.value[currentQuestion.value].options)
+  questions.value[currentQuestion.value].options = shuffledOptions
+  renderedQuestion.value = questions.value[currentQuestion.value]
   rightAnswer.value = renderedQuestion.value.answer
 }
 
 const checkAnswer = () => {
-  return userAnswers[currentQuestion.value] === rightAnswer.value
+  return userAnswers.value[currentQuestion.value] === rightAnswer.value
 }
-
-// mounted
-onMounted(async () => {
-  try {
-    const response = await fetch('/data/questions.json')
-    questions.push(...(await response.json()))
-
-    totalQuestions.value = questions.length
-    renderedQuestion.value = questions[currentQuestion.value]
-    rightAnswer.value = renderedQuestion.value.answer
-  } catch (error) {
-    console.error(error)
-  }
-})
-
 </script>
 
 <style scoped lang="less">
@@ -92,5 +64,5 @@ onMounted(async () => {
   align-items: center;
   justify-content: center;
 }
-
 </style>
+../composables/useQuestions
