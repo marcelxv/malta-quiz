@@ -3,7 +3,7 @@
     <h3>Results</h3>
     <p>You got {{ totalCorrect }} out of {{ totalQuestions }} correct!</p>
     <div class="progress-bar">
-      <div class="progress" :style="{ width: (totalCorrect / totalQuestions * 100) + '%' }" />
+      <div class="progress" :style="{ width: (totalCorrect / totalQuestions * 100) + '%' }" :aria-valuenow="totalCorrect" aria-valuemin="0" :aria-valuemax="totalQuestions" />
     </div>
   </div>
 </template>

@@ -20,7 +20,7 @@ defineProps({
 .redirect-button {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: var(--pumpkin);
+  background-color: var(--zomp);
   text-decoration: none;
   margin-top: 1rem;
   cursor: pointer;

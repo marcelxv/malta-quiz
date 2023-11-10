@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['./assets/css/main.less'],
   modules: ['@pinia/nuxt', '@nuxt/content'],
+  head: {
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   app: {
     head: {
       charset: 'utf-8',
