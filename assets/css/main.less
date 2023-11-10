@@ -51,6 +51,20 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--zomp);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: var(--offwhite);
+    color: var(--charcoal);
+    cursor: not-allowed;
+  }
 }
 
 body {

@@ -7,8 +7,8 @@
       :current-question="currentQuestion"
       :rendered-question="renderedQuestion"
       @update-answer="handleUpdateAnswer"
-      @next="handleNext"
     />
+    <button @click="handleNext" :disabled="!userAnswers[currentQuestion]">Next</button>
     <QuizProgress :total-correct="totalCorrect" :total-questions="totalQuestions" @next="handleNext" />
   </div>
 </template>
