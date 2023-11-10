@@ -6,7 +6,7 @@
       <div class="question-item__option-list">
         <li v-for="option in renderedQuestion.options" :key="option">
           <label>
-            <input type="radio" :value="option" name="answer" @change="updateAnswer" />
+            <input type="radio" :value="option" name="answer" @change="updateAnswer">
             <span class="question-item__option-text">
               {{ option }}
             </span>
@@ -176,4 +176,5 @@ input[type="radio"] {
 .question-item__option-text--active {
   color: var(--zomp);
   font-weight: 700;
-}</style>
+}
+</style>

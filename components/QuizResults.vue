@@ -13,8 +13,14 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  totalCorrect: Number,
-  totalQuestions: Number
+  totalCorrect: {
+    type: Number,
+    required: true
+  },
+  totalQuestions: {
+    type: Number,
+    required: true
+  }
 })
 
 </script>

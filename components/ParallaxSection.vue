@@ -12,9 +12,11 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  image: String
+  image: {
+    type: String,
+    required: true
+  }
 })
-
 </script>
 
 <style scoped>
@@ -68,4 +70,5 @@ defineProps({
     perspective-origin: 0 0;
   }
 
-}</style>
+}
+</style>
