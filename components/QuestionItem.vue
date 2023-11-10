@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import DefaultButton from './DefaultButton.vue';
+import DefaultButton from './DefaultButton.vue'
 
 type IQuestion = {
   text: string
