@@ -53,5 +53,60 @@
       "+359"
     ],
     "answer": "+356"
+  },
+  {
+    "id": 6,
+    "text": "Which of these is a famous historical site in Malta?",
+    "options": [
+      "Ħaġar Qim",
+      "Stonehenge",
+      "Machu Picchu",
+      "Great Wall of China"
+    ],
+    "answer": "Ħaġar Qim"
+  },
+  {
+    "id": 7,
+    "text": "What is the national bird of Malta?",
+    "options": [
+      "Blue Rock Thrush",
+      "Bald Eagle",
+      "Kiwi",
+      "Emu"
+    ],
+    "answer": "Blue Rock Thrush"
+  },
+  {
+    "id": 8,
+    "text": "What is the highest point in Malta?",
+    "options": [
+      "Ta' Dmejrek",
+      "Mont Blanc",
+      "Mount Everest",
+      "Kilimanjaro"
+    ],
+    "answer": "Ta' Dmejrek"
+  },
+  {
+    "id": 9,
+    "text": "Which of these Maltese dishes is a traditional fish-based soup?",
+    "options": [
+      "Aljotta",
+      "Borscht",
+      "Gazpacho",
+      "Minestrone"
+    ],
+    "answer": "Aljotta"
+  },
+  {
+    "id": 10,
+    "text": "In which year did Malta gain independence from the United Kingdom?",
+    "options": [
+      "1964",
+      "1947",
+      "1980",
+      "1990"
+    ],
+    "answer": "1964"
   }
 ]
