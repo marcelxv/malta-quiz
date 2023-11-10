@@ -18,9 +18,6 @@
         <div class="question-item__skeleton" />
       </template>
     </ClientOnly>
-    <DefaultButton @click="handleNext">
-      Next
-    </DefaultButton>
   </div>
 </template>
 
@@ -95,7 +92,7 @@ input[type="radio"] {
   border: 1px solid hsl(0, 0%, 80%);
   padding: 2rem;
   width: 300px;
-  height: 450px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
