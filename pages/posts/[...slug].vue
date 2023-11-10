@@ -3,7 +3,7 @@
     <ContentDoc v-slot="{ doc }">
       <article>
         <h1>{{ doc.title }}</h1>
-        <img :src="doc.image" :alt="doc.title" class="img-fluid">
+        <img :src="doc.image" :alt="doc.title" loading="eager" />
         <ContentRenderer :value="doc" />
       </article>
     </ContentDoc>

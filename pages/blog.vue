@@ -4,7 +4,7 @@
     <section class="blog-list">
       <div v-for="blog in content" :key="blog.id" class="blog-item">
         <div class="blog-item__image">
-          <img :src="blog.image">
+          <img :src="blog.image" :alt="blog.title" loading="eager" />
         </div>
         <div class="blog-item__content">
           <h2>{{ blog.title }}</h2>

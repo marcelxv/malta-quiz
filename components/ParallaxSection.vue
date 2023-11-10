@@ -1,6 +1,6 @@
 <template>
   <div class="parallax-container">
-    <div class="parallax" :style="{ backgroundImage: 'url(' + image + ')' }" />
+    <img :src="image" :alt="image" class="parallax" loading="lazy" />
     <div class="overlay" />
     <div class="content">
       <slot />
@@ -46,22 +46,18 @@ defineProps({
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
-  /* black overlay with 50% opacity */
   z-index: 5;
-  /* Ensure it's above the background but below the content */
 }
 
 .content {
   position: relative;
   z-index: 10;
-  /* Above the overlay */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   color: white;
-  /* Ensure text color is light for dark overlay */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -69,6 +65,5 @@ defineProps({
     perspective: 1px;
     perspective-origin: 0 0;
   }
-
 }
 </style>
