@@ -1,8 +1,6 @@
-
-import Headline from '~/components/Headline.vue';
 <template>
   <div>
-    <Headline />
+    <HeaderNav />
     <slot />
     <BottomBarNav />
   </div>
