@@ -16,14 +16,15 @@
         <div class="question-item__skeleton" />
       </template>
     </ClientOnly>
-    <button @click="handleNext">
+    <DefaultButton @click="handleNext">
       Next
-    </button>
+    </DefaultButton>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
+import DefaultButton from './DefaultButton.vue';
 
 type IQuestion = {
   text: string
