@@ -1,12 +1,6 @@
 <template>
   <main class="quiz__container safe-bottom">
-    <div v-show="!isStarted" class="quiz__intro">
-      <h1>Quiz</h1>
-      <p>Test your knowledge of Malta!</p>
-      <button @click="isStarted = true">
-        Start
-      </button>
-    </div>
+    <QuizIntro v-show="!isStarted" @start="isStarted = true" />
     <QuizForm v-if="!isFinished && isStarted" :total-correct="totalCorrect" @finish="handleSubmission" />
     <ResultSummary v-if="isFinished" :user-points="totalCorrect" />
   </main>
@@ -45,32 +39,6 @@ const handleSubmission = () => {
   align-items: center;
   justify-content: center;
   height: 100vh;
-
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  button {
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    border: none;
-    background: var(--sunglow);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background: var(--sunglow-dark);
-    }
-  }
 }
 
 .quiz__container {

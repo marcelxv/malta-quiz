@@ -1,7 +1,7 @@
 <template>
-  <div class="container safe-bottom">
+  <main class="container safe-bottom">
     <h1>Blog</h1>
-    <div class="blog-list">
+    <section class="blog-list">
       <div v-for="blog in content" :key="blog.id" class="blog-item">
         <div class="blog-item__image">
           <img :src="blog.image">
@@ -14,8 +14,8 @@
           </router-link>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -69,7 +69,6 @@ const content = ref([
 </script>
 
 <style scoped lang="less">
-
 .blog-list {
   display: flex;
   flex-wrap: wrap;
