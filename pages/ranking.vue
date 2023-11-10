@@ -1,5 +1,7 @@
 <template>
-  <ResultSummary :user-points="totalCorrect" />
+  <div class="container">
+    <ResultSummary :user-points="totalCorrect" />
+  </div>
 </template>
 
 <script setup lang="ts">
