@@ -31,34 +31,27 @@ const content = ref([
   },
   {
     id: '2',
-    title: 'A Great Place to Visit',
-    description: 'Discover why Malta is a great place to visit.',
-    image: '/img/malta_001.jpg',
-    path: 'great-place-to-visit'
-  },
-  {
-    id: '3',
     title: 'A Festive Heartbeat',
     description: 'Discover why Malta is a great place to visit.',
     image: '/img/malta_002.jpg',
     path: 'festive-heartbeat'
   },
   {
-    id: '4',
+    id: '3',
     title: 'Leisure and Luxury',
     description: 'Discover why Malta is a great place to visit.',
     image: '/img/malta_003.jpg',
     path: 'leisure-and-luxury'
   },
   {
-    id: '5',
+    id: '4',
     title: 'Historical Tapestry',
     description: 'Discover why Malta is a great place to visit.',
     image: '/img/malta_004.jpg',
     path: 'historical-tapestry'
   },
   {
-    id: '6',
+    id: '5',
     title: 'Underwater Wonderland',
     description: 'Discover why Malta is a great place to visit.',
     image: '/img/malta_004.jpg',

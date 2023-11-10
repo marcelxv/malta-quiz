@@ -6,8 +6,10 @@
       <div class="question-item__option-list">
         <li v-for="option in renderedQuestion.options" :key="option">
           <label>
-            <input type="radio" :value="option" name="answer" @change="updateAnswer">
-            {{ option }}
+            <input type="radio" :value="option" name="answer" @change="updateAnswer" />
+            <span class="question-item__option-text">
+              {{ option }}
+            </span>
           </label>
         </li>
       </div>
@@ -76,9 +78,11 @@ const handleNext = () => {
 input[type="radio"] {
   margin-right: 0.5rem; // space out the radio button from the label text
   cursor: pointer;
+
   &:focus {
     outline: 2px solid var(--blue); // clear focus indicator
   }
+
   &:checked {
     accent-color: var(--zomp); // use accent-color for better support
   }
@@ -91,7 +95,7 @@ input[type="radio"] {
   border: 1px solid hsl(0, 0%, 80%);
   padding: 2rem;
   width: 300px;
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -135,6 +139,7 @@ input[type="radio"] {
     }
   }
 }
+
 .question-item_container h2 {
   margin: 0;
 }
@@ -160,6 +165,15 @@ input[type="radio"] {
       opacity: 0.4;
     }
   }
-
 }
-</style>
+
+.question-item__option-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.question-item__option-text--active {
+  color: var(--zomp);
+  font-weight: 700;
+}</style>

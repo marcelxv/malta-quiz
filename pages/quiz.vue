@@ -43,7 +43,7 @@ const handleSubmission = () => {
 
 .quiz__container {
   margin: 0 auto;
-  padding: 1rem;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
