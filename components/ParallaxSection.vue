@@ -1,6 +1,6 @@
 <template>
   <div class="parallax-container">
-    <img :src="image" :alt="image" class="parallax" loading="lazy" />
+    <img :src="image" :alt="image" class="parallax" loading="lazy">
     <div class="overlay" />
     <div class="content">
       <slot />

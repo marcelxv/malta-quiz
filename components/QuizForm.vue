@@ -1,6 +1,8 @@
 <template>
   <div class="quiz-container">
-    <div class="parallax bg" />
+    <div class="parallax bg">
+      /
+    </div>
     <QuestionItem
       :question-number="currentQuestion"
       :total-questions="totalQuestions"
@@ -8,7 +10,9 @@
       :rendered-question="renderedQuestion"
       @update-answer="handleUpdateAnswer"
     />
-    <button @click="handleNext" :disabled="!userAnswers[currentQuestion]">Next</button>
+    <button :disabled="!userAnswers[currentQuestion]" @click="handleNext">
+      Next
+    </button>
     <QuizProgress :total-correct="totalCorrect" :total-questions="totalQuestions" @next="handleNext" />
   </div>
 </template>

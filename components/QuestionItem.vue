@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import DefaultButton from './DefaultButton.vue'
 
 type IQuestion = {
   text: string
@@ -50,10 +49,6 @@ const emit = defineEmits(['update-answer', 'next'])
 
 const updateAnswer = (event: Event) => {
   emit('update-answer', (event.target as HTMLInputElement).value)
-}
-
-const handleNext = () => {
-  emit('next')
 }
 
 </script>

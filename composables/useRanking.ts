@@ -36,7 +36,7 @@ export function useRanking (userPoints) {
       const results = await response.json()
       ranking.value = results
     } catch (error) {
-      console.error(error)
+      console.error(error) // eslint-disable-line no-console
     }
   })
 
