@@ -1,7 +1,7 @@
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, Ref } from 'vue'
 
-export function useQuestions (url) {
-  const questions = ref([])
+export function useQuestions(url: string) {
+  const questions: Ref = ref([])
   const totalQuestions = computed(() => questions.value.length)
   const currentQuestion = ref(0)
   const rightAnswer = ref('')
@@ -25,7 +25,7 @@ export function useQuestions (url) {
     }
   }
 
-  const shuffleOptionsOrder = (options) => {
+  const shuffleOptionsOrder = (options = []) => {
     return options.sort(() => Math.random() - 0.5)
   }
 
