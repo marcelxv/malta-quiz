@@ -10,10 +10,10 @@ export const useUserStore = defineStore({
     upperCaseName: state => state.name.toUpperCase()
   },
   actions: {
-    setName (newName: string) {
+    setName(newName: string) {
       this.name = newName
     },
-    addPoints (amount: number) {
+    addPoints(amount: number) {
       this.points += amount
     }
   }

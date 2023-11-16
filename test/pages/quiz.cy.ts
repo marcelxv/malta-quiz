@@ -12,7 +12,7 @@ describe('<Quiz />', () => {
         totalCorrect: 5,
         isFinished: false
       },
-      setup () {
+      setup() {
         return {
           useSeoMeta: {
             title: 'title',

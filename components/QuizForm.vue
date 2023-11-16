@@ -1,8 +1,6 @@
 <template>
   <div class="quiz-container">
-    <div class="parallax bg">
-      /
-    </div>
+    <div class="parallax bg" />
     <QuestionItem
       :question-number="currentQuestion"
       :total-questions="totalQuestions"

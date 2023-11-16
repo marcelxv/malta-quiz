@@ -5,7 +5,7 @@ describe('<Index />', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(Index, {
       // useSeoMeta mock
-      setup () {
+      setup() {
         return {
           useSeoMeta: {
             title: 'title',

@@ -11,7 +11,7 @@ export function useQuestions(url: string) {
     answer: ''
   })
 
-  const fetchData = async () => {
+  const fetchData = async() => {
     try {
       const response = await fetch(url)
       questions.value = await response.json()

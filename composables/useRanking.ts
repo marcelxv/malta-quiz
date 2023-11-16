@@ -1,6 +1,6 @@
 import { ref, computed, onMounted } from 'vue'
 
-export function useRanking (userPoints) {
+export const useRanking = (userPoints) => {
   const ranking = ref([])
 
   const calculateRanking = (rankingData) => {
@@ -30,7 +30,7 @@ export function useRanking (userPoints) {
     return Math.round((totalUsers - userIndex - 1) / (totalUsers - 1) * 100)
   })
 
-  onMounted(async () => {
+  onMounted(async() => {
     try {
       const response = await fetch('/data/ranking.json')
       const results = await response.json()
